@@ -19,6 +19,23 @@ typedef enum : NSUInteger {
 
 @interface TBServices : NSObject
 
+#pragma mark - Private
+/**
+ *  success
+ *
+ *  @param responseObject id
+ *  @param block          CompleteAPIBlock
+ */
++ (void)success:(id)responseObject completeAPIBlock:(CompleteAPIBlock)block;
+
+/**
+ *  failure
+ *
+ *  @param error NSError
+ *  @param block CompleteAPIBlock
+ */
++ (void)failure:(NSError *)error completeAPIBlock:(CompleteAPIBlock)block;
+
 #pragma mark - Utils
 
 /**
