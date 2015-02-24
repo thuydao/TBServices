@@ -4,6 +4,7 @@
 #import "AFNetworking.h"
 #import "AFHTTPSessionManager.h"
 #import "TDReachability.h"
+#import "TDMBProgressHUDManager.h"
 
 #define TB_DOMAIN @"TB_DOMAIN"
 

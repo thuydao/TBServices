@@ -43,6 +43,54 @@
 + (void)success:(id)responseObject completeAPIBlock:(CompleteAPIBlock)block
 {
     
+    TDLOG(@" \n ==================== API result ============================\
+          \n %@ \n",responseObject);
+    
+    HIDELOADING
+    
+    NSDictionary *result = [responseObject tb_dictionaryForKey:@"result"];
+    STATUS_CODE code = [result tb_intForKey:@"code"];
+    NSString *name = [result tb_stringForKey:@"name"];
+    
+    switch (code) {
+        case STATUS_CODE_SUCCESS:
+            block(responseObject,nil);
+            break;
+//        case STATUS_CODE_LOGIN_REQUIRED ||
+//            STATUS_CODE_LOGIN_AUTIO ||
+//            STATUS_CODE_ACCOUNT_WRONG ||
+//            STATUS_CODE_ACCOUNT_LOCK ||
+//            STATUS_CODE_EMAIL_EXIST ||
+//            STATUS_CODE_PHONE_EXIST ||
+//            STATUS_CODE_VERIFY_WRONG ||
+//            STATUS_CODE_VERIFY_OVER ||
+//            STATUS_CODE_ACCOUNT_EXIST ||
+//            STATUS_CODE_ACCOUNT_INACTIVATED ||
+//            STATUS_CODE_PASSWORD_WRONG ||
+//            STATUS_CODE_SNS_TOKEN_WRONG ||
+//            STATUS_CODE_PARAM_WRONG ||
+//            STATUS_CODE_ACCOUNT_INFO_WRONG ||
+//            STATUS_CODE_NO_DATA ||
+//            STATUS_CODE_NO_ALLOW ||
+//            STATUS_CODE_MISSING_INFO ||
+//            STATUS_CODE_PROCESS_ERROR ||
+//            STATUS_CODE_DATA_NOT_SYNCHRONOUS ||
+//            STATUS_CODE_COIN_NOT_ENOUGH ||
+//            STATUS_CODE_SONG_EXIST ||
+//            STATUS_CODE_PLAYLIST_FULL ||
+//            STATUS_CODE_SONG_FULL:
+//            
+//        break;
+//            
+        default:
+            [UIAlertView showAlertViewWithMessage:name cancelButtonTitle:NSLocalizedString(@"Ok", @"Ok in alertview") tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                
+            }];
+            break;
+        
+    }
+    
+   
 }
 
 /**
@@ -53,7 +101,8 @@
  */
 + (void)failure:(NSError *)error completeAPIBlock:(CompleteAPIBlock)block
 {
-    
+    HIDELOADING
+    block(nil,error);
 }
 
 #pragma mark - Call API

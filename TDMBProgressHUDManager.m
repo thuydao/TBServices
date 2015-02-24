@@ -25,7 +25,7 @@
 + (void)showLoading {
     [TDMBProgressHUDManager sharedInstance].countProgress += 1;
     if ([TDMBProgressHUDManager sharedInstance].countProgress == 1) {
-        [MBProgressHUD showHUDAddedTo:[SCAppDelegate shareAppDelegate].window animated:YES];
+        [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
     }
 }
 
@@ -34,7 +34,7 @@
     [TDMBProgressHUDManager sharedInstance].countProgress -= 1;
     if ( [TDMBProgressHUDManager sharedInstance].countProgress < 0)  [TDMBProgressHUDManager sharedInstance].countProgress  = 0;
     if ([TDMBProgressHUDManager sharedInstance].countProgress == 0) {
-        [MBProgressHUD hideAllHUDsForView:[SCAppDelegate shareAppDelegate].window animated:YES];
+        [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
     }
 }
 
