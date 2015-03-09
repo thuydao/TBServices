@@ -8,9 +8,9 @@
 
 #define TB_DOMAIN @"TB_DOMAIN"
 
-#define CallAPI_WITHURL_WHITTYPEAPI_WITHPARAMS_WITHCOMPLETED(url,typeAPI,params,block) [TBServices callAPIWithUrl:url TypeAPI:typeAPI withParams:params completed:block]
+#define CallAPI_WITHURL_WHITTYPEAPI_WITHPARAMS_WITHCOMPLETED(url,typeAPI,params,block) [TBServices callAPIWithUrl : url TypeAPI : typeAPI withParams : params completed : block]
 
-typedef void(^CompleteAPIBlock)(id result, NSError *error);
+typedef void (^CompleteAPIBlock)(id result, NSError *error);
 typedef enum : NSUInteger {
     POST = 0,
     GET  = 1,
@@ -76,7 +76,7 @@ typedef enum : NSUInteger {
  *  @param contentImage UIImage
  *  @param block        CompleteAPIBlock
  */
-+ (void)uploadAvatarBase64WithUrl:(NSString *)url  param:(NSMutableDictionary*)param   content:(UIImage*)contentImage completed:(CompleteAPIBlock)block;
++ (void)uploadAvatarBase64WithUrl:(NSString *)url param:(NSMutableDictionary*)param content:(UIImage*)contentImage completed:(CompleteAPIBlock)block;
 
 
 /**
